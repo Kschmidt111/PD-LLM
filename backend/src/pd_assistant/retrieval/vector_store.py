@@ -35,7 +35,7 @@ class InMemoryVectorStore:
         return True
 
 
-    def _dot_product(a: list[float], b: list[float]) -> float:
-        if len(a) != len(b):
-            raise ValueError("Embedding dimensions must match for scoring")
-        return sum(x * y for x, y in zip(a, b))
+def _dot_product(a: list[float], b: list[float]) -> float:
+    if len(a) != len(b):
+        raise ValueError("Embedding dimensions must match for scoring")
+    return sum(x * y for x, y in zip(a, b))
