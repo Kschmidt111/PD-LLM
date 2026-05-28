@@ -1,0 +1,29 @@
+# Python (backend)
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+**/*.egg-info/
+
+# Secrets / local env
+**/.env
+
+# Node (frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+*.local
+
+# Logs
+*.log
+
+# Repo rule: ignore all markdown files
+*.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
