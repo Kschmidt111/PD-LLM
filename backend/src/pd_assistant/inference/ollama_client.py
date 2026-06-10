@@ -32,6 +32,6 @@ class OllamaClient:
 
 
     def generate(self, messages: list[ChatMessage]) -> LLMResponse:
-        return NotImplementedError("generate is not implemented")
+        raise NotImplementedError("generate is not implemented")
 
         

@@ -32,9 +32,5 @@ class VectorStore(Protocol):
 
     def search(
         self,
-        query_embedding: list[float],
-        *,
-        top_k: int,
-        filters: dict[str, str] | None = None,
-    ) -> list[ScoredChunk]:
+        query_embedding: list[float], *, top_k: int, filters: dict[str, str] | None = None, ) -> list[ScoredChunk]:
         """Return top_k chunks ranked by similarity to the query embedding."""

@@ -14,22 +14,12 @@ class RetrievalResult:
 
 
 class RetrievalService:
-    def __init__(
-        self,
-        embedding_provider: EmbeddingProvider,
-        vector_store: VectorStore,
-        top_k: int | None = None,
-    ) -> None:
+    def __init__(self, embedding_provider: EmbeddingProvider, vector_store: VectorStore, top_k: int | None = None) -> None:
         self._embedder = embedding_provider
         self._vector_store = vector_store
         self._top_k = top_k if top_k is not None else get_settings().top_k
 
-    def retrieve(
-        self,
-        query: str,
-        *,
-        filters: dict[str, str] | None = None,
-    ) -> RetrievalResult:
+    def retrieve(self, query: str, *, filters: dict[str, str] | None = None) -> RetrievalResult:
         start = time.perf_counter()
 
         embed_start = time.perf_counter()
@@ -38,11 +28,7 @@ class RetrievalService:
         embed_ms = (time.perf_counter() - embed_start) * 1000.0
 
         search_start = time.perf_counter()
-        chunks = self._vector_store.search(
-            query_embedding,
-            top_k=self._top_k,
-            filters=filters,
-        )
+        chunks = self._vector_store.search(query_embedding, top_k=self._top_k, filters=filters)
         search_end = time.perf_counter()
         search_ms = (search_end - search_start) * 1000.0
         total_ms = (search_end - start) * 1000.0
