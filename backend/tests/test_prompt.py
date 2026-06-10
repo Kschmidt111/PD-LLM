@@ -2,7 +2,7 @@ from pd_assistant.inference.prompt import build_rag_prompt
 
 
 
-def test_build_rag_prompt() -> None:
+def test_rag_system_prompt_includes_safety_rules() -> None:
     prompt = build_rag_prompt()
     assert prompt is not None
     assert "Research and education only. Not medical advice." in prompt

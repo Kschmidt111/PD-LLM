@@ -22,8 +22,16 @@ class Settings(BaseSettings):
         validation_alias="OLLAMA_BASE_URL",
     )
     ollama_model: str = Field(default="llama3", validation_alias="OLLAMA_MODEL")
+    qdrant_url: str = Field(
+        default="http://localhost:6333",
+        validation_alias="QDRANT_URL",
+    )
+    qdrant_collection: str = Field(
+        default="pd_chunks",
+        validation_alias="QDRANT_COLLECTION",
+    )
 
-
+    
 @lru_cache
 def get_settings() -> Settings:
     return Settings()

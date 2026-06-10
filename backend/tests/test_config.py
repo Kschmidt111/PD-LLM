@@ -7,6 +7,8 @@ _ENV_KEYS = (
     "CHUNK_SIZE",
     "OLLAMA_BASE_URL",
     "OLLAMA_MODEL",
+    "QDRANT_URL",
+    "QDRANT_COLLECTION",
 )
 
 
@@ -22,6 +24,9 @@ def test_settings_defaults_and_env_override(monkeypatch) -> None:
     assert settings.chunk_size == 800
     assert settings.ollama_base_url == "http://localhost:11434"
     assert settings.ollama_model == "llama3"
+    assert settings.qdrant_collection == "pd_chunks"
+    assert settings.qdrant_url == "http://localhost:6333"
+
 
     monkeypatch.setenv("TOP_K", "8")
     monkeypatch.setenv("OLLAMA_MODEL", "llama3.1")
@@ -30,3 +35,4 @@ def test_settings_defaults_and_env_override(monkeypatch) -> None:
     overridden = Settings()
     assert overridden.top_k == 8
     assert overridden.ollama_model == "llama3.1"
+    
